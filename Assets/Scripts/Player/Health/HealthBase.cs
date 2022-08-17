@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HealthBase : MonoBehaviour
 {
-    public Rigidbody2D myRigidbody;
+    public Rigidbody2D playerBody;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            myRigidbody.velocity = Vector2.zero;
-            myRigidbody.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+            playerBody.velocity = Vector2.zero;
+            playerBody.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
             collision.gameObject.GetComponent<SpriteRenderer>().flipY = true;
             collision.gameObject.GetComponent<KillOrDie>().enabled = false;
             collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
